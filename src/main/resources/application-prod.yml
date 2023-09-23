@@ -1,0 +1,50 @@
+server:
+  port: 8081
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  datasource:
+    #link localhost
+#    url: jdbc:postgresql://localhost:5432/testdb
+    url: jdbc:postgresql://172.20.0.2:5432/testdb
+    username: postgres
+    password: postgres
+    platform: org.hibernate.dialect.PostgreSQLDialect
+  application:
+    name: ms-authen-service
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://172.20.0.4:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+ms-application:
+  jwt:
+    secret-key: bezKoderSecretKey
+    expiration-time: 86400000
+
+  redis:
+    host: 172.20.0.3
+    port2-read: 6379
+    port2-write: 6379
+    enable: true
+    maxTotal: 100
+    timeout: 600000
+    messageExpireTime: 60
+#  kafka:
+#    enable: true
+#    bootsTrapServer: vt-kkbrokdev01:9092,vt-kkbrokdev02:9092,vt-kkbrokdev03:9092
+#    clientId: MsDemo-test-1
+#    #    username: phaivv
+#    #    pwd: phaivv
+#    pollSize: 300
+

@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: prod
+    include: corebase, prod
+  group:
+    dev:
+      - prod
+
